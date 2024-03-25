@@ -33,6 +33,15 @@ public class LinkedList2<Item> implements Iterable<Item> {
         private Node next;
     }
 
+    public void removeFirst() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        else {
+            first = first.next;
+            n--;
+        }
+    }
+
     public void addFirst(Item item) {
         Node newNode = new Node();
         newNode.item = item;
@@ -40,6 +49,24 @@ public class LinkedList2<Item> implements Iterable<Item> {
         first = newNode;
         n++;
     }
+
+    public void removeLast() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        else {
+            Node beforeLast = null;
+            Node last = first;
+
+            while (last.next != null) {
+                beforeLast = last;
+                last = last.next;
+            }
+
+            beforeLast.next = null;
+            n--;
+        }
+    }
+
 
     public void addLast(Item item) {
         if (isEmpty())
